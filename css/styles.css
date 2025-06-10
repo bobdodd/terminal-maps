@@ -159,67 +159,151 @@ button:focus {
     max-height: 100%;
     width: auto;
     height: auto;
+    background-color: #f8f9fa;
 }
 
 /* SVG Styles */
 .gate {
-    fill: #4CAF50;
-    stroke: #2E7D32;
-    stroke-width: 2;
+    fill: #ffc107;
+    stroke: #f57c00;
+    stroke-width: 1.5;
     cursor: pointer;
-    transition: fill 0.2s;
+    transition: all 0.2s;
 }
 
 .gate:hover {
-    fill: #66BB6A;
+    fill: #ffb300;
+    stroke-width: 2.5;
 }
 
 .gate.hidden {
     display: none;
 }
 
+/* Terminal outline styles */
+#terminal-outline path {
+    transition: opacity 0.3s;
+}
+
+#terminal-outline path:hover {
+    opacity: 0.8;
+}
+
 .restroom {
     fill: #2196F3;
     stroke: #1565C0;
-    stroke-width: 2;
+    stroke-width: 1.5;
     cursor: pointer;
+    transition: all 0.2s;
 }
 
 .restroom:hover {
     fill: #42A5F5;
+    stroke-width: 2.5;
+}
+
+.information {
+    fill: #4caf50;
+    stroke: #2e7d32;
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.information:hover {
+    fill: #66bb6a;
+    stroke-width: 2.5;
+}
+
+.medical {
+    fill: #f44336;
+    stroke: #c62828;
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.medical:hover {
+    fill: #ef5350;
+    stroke-width: 2.5;
 }
 
 .restaurant {
     fill: #FF9800;
     stroke: #E65100;
-    stroke-width: 2;
+    stroke-width: 1.5;
     cursor: pointer;
+    transition: all 0.2s;
 }
 
 .restaurant:hover {
     fill: #FFA726;
+    stroke-width: 2.5;
 }
 
 .shop {
     fill: #9C27B0;
     stroke: #6A1B9A;
-    stroke-width: 2;
+    stroke-width: 1.5;
     cursor: pointer;
+    transition: all 0.2s;
 }
 
 .shop:hover {
     fill: #AB47BC;
+    stroke-width: 2.5;
+}
+
+.lounge {
+    fill: #673ab7;
+    stroke: #4527a0;
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.lounge:hover {
+    fill: #7e57c2;
+    stroke-width: 2.5;
 }
 
 .security {
-    fill: #F44336;
-    stroke: #C62828;
-    stroke-width: 2;
+    fill: #ff5722;
+    stroke: #d84315;
+    stroke-width: 1.5;
     cursor: pointer;
+    transition: all 0.2s;
 }
 
 .security:hover {
-    fill: #EF5350;
+    fill: #ff6e40;
+    stroke-width: 2.5;
+}
+
+.customs {
+    fill: #795548;
+    stroke: #4e342e;
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.customs:hover {
+    fill: #8d6e63;
+    stroke-width: 2.5;
+}
+
+.baggage {
+    fill: #607d8b;
+    stroke: #37474f;
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.baggage:hover {
+    fill: #78909c;
+    stroke-width: 2.5;
 }
 
 /* Focus Indicator */

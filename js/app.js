@@ -39,6 +39,9 @@ class TerminalMapApp {
         // Clear placeholder content
         mapContent.innerHTML = '';
         
+        // Update viewBox to match YVR terminal shape
+        svg.setAttribute('viewBox', '0 0 2000 1200');
+        
         // Create terminal outline
         this.createTerminalOutline(mapContent);
         
@@ -52,32 +55,103 @@ class TerminalMapApp {
     createTerminalOutline(parent) {
         const g = this.createSVGGroup(parent, 'terminal-outline');
         
-        // Main terminal building
-        const terminal = this.createSVGRect(g, {
-            x: 100,
-            y: 100,
-            width: 1400,
-            height: 700,
-            fill: '#f5f5f5',
-            stroke: '#333',
-            strokeWidth: 3
-        });
+        // YVR has a Y-shaped terminal with three piers
+        // Central terminal area
+        const centralPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        centralPath.setAttribute('d', `
+            M 800 600
+            L 900 500
+            L 1100 500
+            L 1200 600
+            L 1200 700
+            L 1100 800
+            L 900 800
+            L 800 700
+            Z
+        `);
+        centralPath.setAttribute('fill', '#e3f2fd');
+        centralPath.setAttribute('stroke', '#1976d2');
+        centralPath.setAttribute('stroke-width', '3');
+        g.appendChild(centralPath);
         
-        // Concourse labels
-        const concourseLabels = [
-            { text: 'Domestic', x: 400, y: 80 },
-            { text: 'USA', x: 800, y: 80 },
-            { text: 'International', x: 1200, y: 80 }
+        // Pier A (Left pier - Domestic)
+        const pierA = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        pierA.setAttribute('d', `
+            M 900 600
+            L 700 400
+            L 500 300
+            L 300 200
+            L 200 150
+            L 150 150
+            L 150 250
+            L 200 250
+            L 300 300
+            L 500 400
+            L 700 500
+            L 900 700
+        `);
+        pierA.setAttribute('fill', '#e8f5e9');
+        pierA.setAttribute('stroke', '#2e7d32');
+        pierA.setAttribute('stroke-width', '3');
+        g.appendChild(pierA);
+        
+        // Pier B (Right pier - USA)
+        const pierB = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        pierB.setAttribute('d', `
+            M 1100 600
+            L 1300 400
+            L 1500 300
+            L 1700 200
+            L 1800 150
+            L 1850 150
+            L 1850 250
+            L 1800 250
+            L 1700 300
+            L 1500 400
+            L 1300 500
+            L 1100 700
+        `);
+        pierB.setAttribute('fill', '#fff3e0');
+        pierB.setAttribute('stroke', '#e65100');
+        pierB.setAttribute('stroke-width', '3');
+        g.appendChild(pierB);
+        
+        // Pier C/D/E (Bottom pier - International)
+        const pierCDE = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        pierCDE.setAttribute('d', `
+            M 900 700
+            L 900 900
+            L 850 950
+            L 850 1050
+            L 950 1050
+            L 1050 1050
+            L 1150 1050
+            L 1150 950
+            L 1100 900
+            L 1100 700
+        `);
+        pierCDE.setAttribute('fill', '#fce4ec');
+        pierCDE.setAttribute('stroke', '#c2185b');
+        pierCDE.setAttribute('stroke-width', '3');
+        g.appendChild(pierCDE);
+        
+        // Terminal labels
+        const terminalLabels = [
+            { text: 'DOMESTIC', x: 400, y: 250, fill: '#2e7d32' },
+            { text: 'USA', x: 1600, y: 250, fill: '#e65100' },
+            { text: 'INTERNATIONAL', x: 1000, y: 1000, fill: '#c2185b' },
+            { text: 'MAIN TERMINAL', x: 1000, y: 650, fill: '#1976d2', fontSize: 20 }
         ];
         
-        concourseLabels.forEach(label => {
+        terminalLabels.forEach(label => {
             this.createSVGText(g, {
                 x: label.x,
                 y: label.y,
                 text: label.text,
-                fontSize: 24,
+                fontSize: label.fontSize || 16,
                 fontWeight: 'bold',
-                fill: '#333'
+                fill: label.fill,
+                textAnchor: 'middle'
             });
         });
     }
