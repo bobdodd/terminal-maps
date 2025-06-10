@@ -55,105 +55,122 @@ class TerminalMapApp {
     createTerminalOutline(parent) {
         const g = this.createSVGGroup(parent, 'terminal-outline');
         
-        // YVR has a Y-shaped terminal with three piers
-        // Central terminal area
-        const centralPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        centralPath.setAttribute('d', `
-            M 800 600
-            L 900 500
-            L 1100 500
-            L 1200 600
-            L 1200 700
-            L 1100 800
-            L 900 800
-            L 800 700
+        // Main terminal building - dark blue area
+        const mainTerminal = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        mainTerminal.setAttribute('d', `
+            M 250 300
+            C 200 280, 180 280, 150 300
+            L 120 350
+            L 120 400
+            L 150 450
+            L 300 550
+            L 450 650
+            L 600 720
+            L 750 780
+            L 900 820
+            L 900 850
+            L 850 900
+            L 850 1000
+            L 900 1050
+            L 1100 1050
+            L 1150 1000
+            L 1150 900
+            L 1100 850
+            L 1100 820
+            L 1250 780
+            L 1400 720
+            L 1550 650
+            L 1700 550
+            L 1850 450
+            L 1880 400
+            L 1880 350
+            L 1850 300
+            C 1820 280, 1800 280, 1750 300
+            L 1650 350
+            L 1500 420
+            L 1350 480
+            L 1200 540
+            L 1100 580
+            L 1050 600
+            L 1000 610
+            L 950 600
+            L 900 580
+            L 800 540
+            L 650 480
+            L 500 420
+            L 350 350
             Z
         `);
-        centralPath.setAttribute('fill', '#e3f2fd');
-        centralPath.setAttribute('stroke', '#1976d2');
-        centralPath.setAttribute('stroke-width', '3');
-        g.appendChild(centralPath);
+        mainTerminal.setAttribute('fill', '#1e3a8a');
+        mainTerminal.setAttribute('stroke', '#1e3a8a');
+        mainTerminal.setAttribute('stroke-width', '2');
+        g.appendChild(mainTerminal);
         
-        // Pier A (Left pier - Domestic)
-        const pierA = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        pierA.setAttribute('d', `
-            M 900 600
-            L 700 400
-            L 500 300
-            L 300 200
-            L 200 150
-            L 150 150
-            L 150 250
-            L 200 250
-            L 300 300
-            L 500 400
-            L 700 500
-            L 900 700
+        // Inner terminal area - light blue
+        const innerTerminal = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        innerTerminal.setAttribute('d', `
+            M 320 380
+            L 480 460
+            L 640 520
+            L 800 580
+            L 900 620
+            L 950 640
+            L 1000 650
+            L 1050 640
+            L 1100 620
+            L 1200 580
+            L 1360 520
+            L 1520 460
+            L 1680 380
+            L 1720 400
+            L 1700 430
+            L 1550 520
+            L 1400 590
+            L 1250 650
+            L 1150 690
+            L 1100 710
+            L 1100 780
+            L 1050 820
+            L 1050 920
+            L 1000 950
+            L 950 920
+            L 950 820
+            L 900 780
+            L 900 710
+            L 850 690
+            L 750 650
+            L 600 590
+            L 450 520
+            L 300 430
+            L 280 400
+            Z
         `);
-        pierA.setAttribute('fill', '#e8f5e9');
-        pierA.setAttribute('stroke', '#2e7d32');
-        pierA.setAttribute('stroke-width', '3');
-        g.appendChild(pierA);
+        innerTerminal.setAttribute('fill', '#3b82f6');
+        innerTerminal.setAttribute('stroke', '#1e3a8a');
+        innerTerminal.setAttribute('stroke-width', '1');
+        g.appendChild(innerTerminal);
         
-        // Pier B (Right pier - USA)
-        const pierB = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        pierB.setAttribute('d', `
-            M 1100 600
-            L 1300 400
-            L 1500 300
-            L 1700 200
-            L 1800 150
-            L 1850 150
-            L 1850 250
-            L 1800 250
-            L 1700 300
-            L 1500 400
-            L 1300 500
-            L 1100 700
-        `);
-        pierB.setAttribute('fill', '#fff3e0');
-        pierB.setAttribute('stroke', '#e65100');
-        pierB.setAttribute('stroke-width', '3');
-        g.appendChild(pierB);
+        // Central concourse area
+        const centralConcourse = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        centralConcourse.setAttribute('x', '850');
+        centralConcourse.setAttribute('y', '680');
+        centralConcourse.setAttribute('width', '300');
+        centralConcourse.setAttribute('height', '100');
+        centralConcourse.setAttribute('rx', '10');
+        centralConcourse.setAttribute('fill', '#60a5fa');
+        centralConcourse.setAttribute('stroke', '#1e3a8a');
+        centralConcourse.setAttribute('stroke-width', '1');
+        g.appendChild(centralConcourse);
         
-        // Pier C/D/E (Bottom pier - International)
-        const pierCDE = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        pierCDE.setAttribute('d', `
-            M 900 700
-            L 900 900
-            L 850 950
-            L 850 1050
-            L 950 1050
-            L 1050 1050
-            L 1150 1050
-            L 1150 950
-            L 1100 900
-            L 1100 700
-        `);
-        pierCDE.setAttribute('fill', '#fce4ec');
-        pierCDE.setAttribute('stroke', '#c2185b');
-        pierCDE.setAttribute('stroke-width', '3');
-        g.appendChild(pierCDE);
-        
-        // Terminal labels
-        const terminalLabels = [
-            { text: 'DOMESTIC', x: 400, y: 250, fill: '#2e7d32' },
-            { text: 'USA', x: 1600, y: 250, fill: '#e65100' },
-            { text: 'INTERNATIONAL', x: 1000, y: 1000, fill: '#c2185b' },
-            { text: 'MAIN TERMINAL', x: 1000, y: 650, fill: '#1976d2', fontSize: 20 }
-        ];
-        
-        terminalLabels.forEach(label => {
-            this.createSVGText(g, {
-                x: label.x,
-                y: label.y,
-                text: label.text,
-                fontSize: label.fontSize || 16,
-                fontWeight: 'bold',
-                fill: label.fill,
-                textAnchor: 'middle'
-            });
-        });
+        // Add rotunda at center
+        const rotunda = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        rotunda.setAttribute('cx', '1000');
+        rotunda.setAttribute('cy', '650');
+        rotunda.setAttribute('r', '40');
+        rotunda.setAttribute('fill', '#93c5fd');
+        rotunda.setAttribute('stroke', '#1e3a8a');
+        rotunda.setAttribute('stroke-width', '2');
+        g.appendChild(rotunda);
     }
     
     createGates(parent) {
@@ -165,37 +182,47 @@ class TerminalMapApp {
             gates.forEach(gate => {
                 const g = this.createSVGGroup(letterGroup, gate.id, 'gate');
                 
-                // Gate shape
-                const rect = this.createSVGRect(g, {
-                    x: gate.x - 20,
-                    y: gate.y - 15,
-                    width: 40,
-                    height: 30,
-                    rx: 5,
-                    ry: 5,
-                    className: 'gate'
-                });
-                
-                // Gate label
+                // Gate number text along terminal edge
                 const text = this.createSVGText(g, {
                     x: gate.x,
-                    y: gate.y + 5,
+                    y: gate.y,
                     text: gate.name.split(' ')[1], // Just the gate number
-                    fontSize: 12,
+                    fontSize: 14,
                     textAnchor: 'middle',
-                    fill: 'white',
-                    pointerEvents: 'none'
+                    fill: '#1e3a8a',
+                    fontWeight: 'bold',
+                    className: 'gate-number'
+                });
+                
+                // Invisible clickable area around the gate number
+                const clickArea = this.createSVGRect(g, {
+                    x: gate.x - 15,
+                    y: gate.y - 12,
+                    width: 30,
+                    height: 20,
+                    fill: 'transparent',
+                    cursor: 'pointer'
                 });
                 
                 // Add ARIA label
                 g.setAttribute('aria-label', `${gate.name}. Airlines: ${gate.airlines.join(', ')}. Destinations: ${gate.destinations.join(', ')}`);
+                g.setAttribute('role', 'button');
+                g.setAttribute('tabindex', '0');
                 
                 // Add click handler
                 g.addEventListener('click', () => this.showFeatureInfo(gate));
                 
                 // Add hover handlers
-                g.addEventListener('mouseenter', (e) => this.handleHover(e, g));
-                g.addEventListener('mouseleave', (e) => this.handleHoverEnd(e, g));
+                g.addEventListener('mouseenter', (e) => {
+                    text.setAttribute('fill', '#fbbf24');
+                    text.setAttribute('font-size', '16');
+                    this.handleHover(e, g);
+                });
+                g.addEventListener('mouseleave', (e) => {
+                    text.setAttribute('fill', '#1e3a8a');
+                    text.setAttribute('font-size', '14');
+                    this.handleHoverEnd(e, g);
+                });
             });
         });
     }

@@ -164,16 +164,21 @@ button:focus {
 
 /* SVG Styles */
 .gate {
-    fill: #ffc107;
-    stroke: #f57c00;
-    stroke-width: 1.5;
     cursor: pointer;
-    transition: all 0.2s;
 }
 
-.gate:hover {
-    fill: #ffb300;
-    stroke-width: 2.5;
+.gate-number {
+    fill: #1e3a8a;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.2s;
+    cursor: pointer;
+    user-select: none;
+}
+
+.gate:hover .gate-number {
+    fill: #fbbf24;
+    font-size: 16px;
 }
 
 .gate.hidden {
@@ -182,11 +187,15 @@ button:focus {
 
 /* Terminal outline styles */
 #terminal-outline path {
-    transition: opacity 0.3s;
+    pointer-events: none;
 }
 
-#terminal-outline path:hover {
-    opacity: 0.8;
+#terminal-outline circle {
+    pointer-events: none;
+}
+
+#terminal-outline rect {
+    pointer-events: none;
 }
 
 .restroom {
