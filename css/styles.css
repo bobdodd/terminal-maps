@@ -1,0 +1,387 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* Container */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 320px;
+    background-color: white;
+    padding: 1.5rem;
+    overflow-y: auto;
+    box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+}
+
+.sidebar h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #003366;
+}
+
+.sidebar h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: #004080;
+}
+
+.sidebar h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+/* Filter Sections */
+.filter-section,
+.rotor-section,
+.controls-section {
+    margin-bottom: 2rem;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-subgroup {
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Form Controls */
+label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+label:hover {
+    background-color: #f0f0f0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 0.5rem;
+    width: 16px;
+    height: 16px;
+}
+
+/* Buttons */
+button {
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #004080;
+}
+
+button:focus {
+    outline: 3px solid #0066cc;
+    outline-offset: 2px;
+}
+
+.clear-button {
+    margin-top: 0.75rem;
+    background-color: #666;
+}
+
+.clear-button:hover {
+    background-color: #555;
+}
+
+/* Map Container */
+.map-container {
+    flex: 1;
+    position: relative;
+    background-color: #fafafa;
+    overflow: hidden;
+}
+
+.map-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Terminal Map SVG */
+.terminal-map {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+/* SVG Styles */
+.gate {
+    fill: #4CAF50;
+    stroke: #2E7D32;
+    stroke-width: 2;
+    cursor: pointer;
+    transition: fill 0.2s;
+}
+
+.gate:hover {
+    fill: #66BB6A;
+}
+
+.gate.hidden {
+    display: none;
+}
+
+.restroom {
+    fill: #2196F3;
+    stroke: #1565C0;
+    stroke-width: 2;
+    cursor: pointer;
+}
+
+.restroom:hover {
+    fill: #42A5F5;
+}
+
+.restaurant {
+    fill: #FF9800;
+    stroke: #E65100;
+    stroke-width: 2;
+    cursor: pointer;
+}
+
+.restaurant:hover {
+    fill: #FFA726;
+}
+
+.shop {
+    fill: #9C27B0;
+    stroke: #6A1B9A;
+    stroke-width: 2;
+    cursor: pointer;
+}
+
+.shop:hover {
+    fill: #AB47BC;
+}
+
+.security {
+    fill: #F44336;
+    stroke: #C62828;
+    stroke-width: 2;
+    cursor: pointer;
+}
+
+.security:hover {
+    fill: #EF5350;
+}
+
+/* Focus Indicator */
+.focus-indicator {
+    pointer-events: none;
+}
+
+.focus-outline {
+    fill: none;
+    stroke: #0066cc;
+    stroke-width: 3;
+    stroke-dasharray: 5,3;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* Feature Info Panel */
+.feature-info {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    max-width: 300px;
+    display: none;
+}
+
+.feature-info.active {
+    display: block;
+}
+
+.feature-info h3 {
+    margin-bottom: 0.5rem;
+    color: #003366;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    color: #666;
+    font-size: 1.5rem;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Accessibility Classes */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+    background-color: black;
+    color: white;
+}
+
+body.high-contrast .sidebar {
+    background-color: #111;
+    border-right: 2px solid white;
+}
+
+body.high-contrast header {
+    background-color: black;
+    border-bottom: 2px solid white;
+}
+
+body.high-contrast .gate {
+    fill: #00FF00;
+    stroke: white;
+}
+
+body.high-contrast .restroom {
+    fill: #00FFFF;
+    stroke: white;
+}
+
+body.high-contrast .restaurant {
+    fill: #FFFF00;
+    stroke: white;
+}
+
+body.high-contrast .security {
+    fill: #FF00FF;
+    stroke: white;
+}
+
+body.high-contrast .feature-info {
+    background-color: black;
+    border: 2px solid white;
+}
+
+/* Focus Styles */
+*:focus {
+    outline: 3px solid #0066cc;
+    outline-offset: 2px;
+}
+
+/* Label Visibility */
+.terminal-map.hide-labels text {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 40vh;
+    }
+    
+    .map-container {
+        height: 60vh;
+    }
+    
+    .feature-info {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .sidebar {
+        display: none;
+    }
+    
+    .map-container {
+        width: 100%;
+    }
+    
+    .feature-info {
+        display: none !important;
+    }
+}

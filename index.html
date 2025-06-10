@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accessible interactive terminal map for Vancouver International Airport (YVR)">
+    <title>YVR Terminal Map - Accessible Navigation</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>YVR Terminal Map</h1>
+            <p class="subtitle">Vancouver International Airport - Main Terminal</p>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar" id="sidebar">
+                <h2>Map Controls</h2>
+                
+                <section class="filter-section">
+                    <h3>Filters</h3>
+                    <div class="filter-group">
+                        <h4>Gates</h4>
+                        <label>
+                            <input type="checkbox" class="filter-checkbox" data-filter="gates-all" checked>
+                            <span>All Gates</span>
+                        </label>
+                        <div class="filter-subgroup">
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="gates-a" checked>
+                                <span>A Gates</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="gates-b" checked>
+                                <span>B Gates</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="gates-c" checked>
+                                <span>C Gates</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="gates-d" checked>
+                                <span>D Gates</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="gates-e" checked>
+                                <span>E Gates</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Services</h4>
+                        <label>
+                            <input type="checkbox" class="filter-checkbox" data-filter="services-all" checked>
+                            <span>All Services</span>
+                        </label>
+                        <div class="filter-subgroup">
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="restrooms" checked>
+                                <span>Restrooms</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="information" checked>
+                                <span>Information</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="medical" checked>
+                                <span>Medical</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Amenities</h4>
+                        <label>
+                            <input type="checkbox" class="filter-checkbox" data-filter="amenities-all" checked>
+                            <span>All Amenities</span>
+                        </label>
+                        <div class="filter-subgroup">
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="restaurants" checked>
+                                <span>Restaurants</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="shops" checked>
+                                <span>Shops</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="lounges" checked>
+                                <span>Lounges</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Transportation</h4>
+                        <label>
+                            <input type="checkbox" class="filter-checkbox" data-filter="transport-all" checked>
+                            <span>All Transportation</span>
+                        </label>
+                        <div class="filter-subgroup">
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="security" checked>
+                                <span>Security</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="customs" checked>
+                                <span>Customs</span>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="filter-checkbox" data-filter="baggage" checked>
+                                <span>Baggage</span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="rotor-section">
+                    <h3>Keyboard Navigation (Rotor)</h3>
+                    <div class="rotor-options">
+                        <label>
+                            <input type="radio" name="rotor" value="none" checked>
+                            <span>Off</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="rotor" value="gates">
+                            <span>Navigate Gates</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="rotor" value="services">
+                            <span>Navigate Services</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="rotor" value="amenities">
+                            <span>Navigate Amenities</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="rotor" value="all">
+                            <span>Navigate All</span>
+                        </label>
+                    </div>
+                    <button id="clearRotor" class="clear-button">Clear Navigation</button>
+                </section>
+
+                <section class="controls-section">
+                    <h3>View Options</h3>
+                    <label>
+                        <input type="checkbox" id="highContrast">
+                        <span>High Contrast Mode</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="showLabels" checked>
+                        <span>Show Labels</span>
+                    </label>
+                </section>
+            </aside>
+
+            <main class="map-container">
+                <div id="mapWrapper" class="map-wrapper">
+                    <svg id="terminalMap" class="terminal-map" viewBox="0 0 1600 900" aria-labelledby="mapTitle mapDesc">
+                        <title id="mapTitle">YVR Terminal Map</title>
+                        <desc id="mapDesc">Interactive map of Vancouver International Airport main terminal showing gates, services, amenities, and transportation areas</desc>
+                        
+                        <!-- Map content will be loaded here -->
+                        <g id="mapContent">
+                            <!-- Placeholder for terminal SVG content -->
+                            <rect x="0" y="0" width="1600" height="900" fill="#f0f0f0" stroke="#ccc" stroke-width="2"/>
+                            <text x="800" y="450" text-anchor="middle" font-size="24" fill="#666">Terminal map loading...</text>
+                        </g>
+                        
+                        <!-- Focus indicator overlay -->
+                        <g id="focusIndicator" class="focus-indicator" aria-hidden="true"></g>
+                    </svg>
+                </div>
+
+                <div id="featureInfo" class="feature-info" role="region" aria-live="polite" aria-atomic="true">
+                    <button id="closeInfo" class="close-button" aria-label="Close information panel">&times;</button>
+                    <h3 id="featureName"></h3>
+                    <div id="featureDetails"></div>
+                </div>
+            </main>
+        </div>
+
+        <div id="announcements" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
